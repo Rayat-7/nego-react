@@ -12,7 +12,8 @@ export const isTokenValid = (token: string): boolean => {
     const currentTime = Date.now() / 1000
 
     return decoded.exp > currentTime
-  } catch (error) {
+  } catch (_error) {
+    // Prefix with underscore to indicate intentionally unused variable
     return false
   }
 }
@@ -21,7 +22,8 @@ export const isAdmin = (token: string): boolean => {
   try {
     const decoded = jwtDecode(token) as DecodedToken
     return decoded.roles.includes("ROLE_ADMIN")
-  } catch (error) {
+  } catch (_error) {
+    // Prefix with underscore to indicate intentionally unused variable
     return false
   }
 }
@@ -32,7 +34,8 @@ export const getUser = (token: string): { username: string } | null => {
     return {
       username: decoded.sub,
     }
-  } catch (error) {
+  } catch (_error) {
+    // Prefix with underscore to indicate intentionally unused variable
     return null
   }
 }
